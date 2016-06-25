@@ -31,7 +31,7 @@ m2048 = mGame()
 print m2048.get_frame().shape
 
 agent = Agent(model=model, memory_size=65536, nb_frames=nb_frames)
-agent.train(m2048, batch_size=512, nb_epoch=1000, epsilon=(.9,.05), gamma=0.1)
+agent.train(m2048, batch_size=512, nb_epoch=10, epsilon=(.9,.05), gamma=0.1)
 model.save_weights('2048_weights.h5', overwrite=True)
 
 #agent.play(m2048)
