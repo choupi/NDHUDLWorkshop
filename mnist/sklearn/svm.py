@@ -33,7 +33,7 @@ print(X_test.shape[0], 'test samples')
 Y_train = [int(y) for y in y_train]
 Y_test = [int(y) for y in y_test]
 
-clf = SVC(kernel='linear', probability=True)
+clf = SVC(kernel='rbf', probability=True, tol=0.1)
 clf = clf.fit(X_train, y_train)
 
 yt_predict = clf.predict_proba(X_train)
