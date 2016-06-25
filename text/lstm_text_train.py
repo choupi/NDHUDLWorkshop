@@ -68,7 +68,7 @@ def sample(a, temperature=1.0):
     return np.argmax(np.random.multinomial(1, a, 1))
 
 # train the model, output generated text after each iteration
-for iteration in range(1, 20):
+for iteration in range(1, 3):
     print()
     print('-' * 50)
     print('Iteration', iteration)
@@ -86,7 +86,7 @@ for iteration in range(1, 20):
         print('----- Generating with seed: "' + sentence + '"')
         sys.stdout.write(generated)
 
-        for i in range(400):
+        for i in range(100):
             x = np.zeros((1, maxlen, len(chars)))
             for t, char in enumerate(sentence):
                 x[0, t, char_indices[char]] = 1.
