@@ -132,7 +132,9 @@ class randomGame(Game):
             return
 
 if __name__ == '__main__':
-    for s in [70]:
-        for i in xrange(50000):
-            rg=mrandomGame(s)
-            rg.loop()
+    #for s in [70]:
+    #    for i in xrange(50000):
+    #        rg=mrandomGame(s)
+    #        rg.loop()
+    rg=randomGame()
+    rg.loop()
