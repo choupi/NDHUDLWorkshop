@@ -32,25 +32,27 @@ nb_conv = 3
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
-#X_train = X_train.reshape(X_train.shape[0], 1, img_rows, img_cols)
+X_train = X_train.reshape(X_train.shape[0], 1, img_rows, img_cols)
 X_test = X_test.reshape(X_test.shape[0], 1, img_rows, img_cols)
-#X_train = X_train.astype('float32')
+X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
-#X_train /= 255
+X_train /= 255
 X_test /= 255
 #print('X_train shape:', X_train.shape)
-#print(X_train.shape[0], 'train samples')
+print(X_train.shape[0], 'train samples')
 print(X_test.shape[0], 'test samples')
 
 # convert class vectors to binary class matrices
-#Y_train = np_utils.to_categorical(y_train, nb_classes)
+Y_train = np_utils.to_categorical(y_train, nb_classes)
 #Y_test = np_utils.to_categorical(y_test, nb_classes)
 Y_test = [int(y) for y in y_test]
 
 model = model_from_json(open('mnist_model.json').read())
 model.load_weights('mnist_weights.h5')
 
+yt_predict = model.predict_proba(X_train, verbose=0)
 y_predict = model.predict_proba(X_test, verbose=0)
+print(log_loss(Y_train, yt_predict))
 print(log_loss(Y_test, y_predict))
 #y_predict = model.predict(X_test, verbose=0)
 #print(y_predict)
